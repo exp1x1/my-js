@@ -1,14 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
-  <title>my-library</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>my-library</title>
+  </head>
+
+  <body>
+    <div class="main">
+      <nav>
+        <div class="title">My Library</div>
+      </nav>
+      <div class="book-container"></div>
+      <div class="sidebar">
+        <form action="" class="book-form">
+          <div class="form-box">
+            <label for="bookName">Book Name</label>
+            <input
+              type="text"
+              name="bookname"
+              id="bookName"
+              placeholder="rich dad poor dad"
+              value="rich dad poor dad"
+              required
+            />
+          </div>
+          <div class="form-box">
+            <label for="author">Author Name</label>
+            <input
+              type="text"
+              name="authorname"
+              id="author"
+              placeholder="Robert T. Kiyosaki"
+              value="Robert T. Kiyosaki"
+              required
+            />
+          </div>
+          <div class="form-box">
+            <label for="pages">Pages</label>
+            <input
+              type="number"
+              name="pagenumber"
+              id="pages"
+              placeholder="336"
+              value="336"
+              required
+            />
+          </div>
+          <div class="form-box check-box">
+            <label for="haveRead">Finished This Book</label>
+            <!-- <input type="checkbox" name="haveread" id="haveRead" > -->
+            <select name="haveread" id="haveRead">
+              <option value="true">YES</option>
+              <option value="false">NO</option>
+            </select>
+          </div>
+          <div class="form-btn">
+            <button id="form-btn" type="button">Add Book</button>
+          </div>
+        </form>
+      </div>
+      <div class="footer"></div>
+    </div>
+  </body>
 </html>
