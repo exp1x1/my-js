@@ -138,6 +138,7 @@ btn.addEventListener("click", () => {
 function removeBook(index) {
   myLibrary.splice(index, 1);
 }
+// change book status using button 
 function changeBookStatus(index) {
   if (myLibrary[index].haveRead === "true") {
     myLibrary[index].haveRead = "false";
@@ -146,5 +147,3 @@ function changeBookStatus(index) {
   }
   addBookToDisplay(myLibrary);
 }
-
-// console.log(document.getElementById('haveRead').value)
