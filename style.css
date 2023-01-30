@@ -11,7 +11,7 @@ body {
   padding: 0;
 }
 
-body {
+/* body {
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradient 10s ease infinite;
@@ -22,19 +22,13 @@ body {
   0% {
     background-position: 0% 25%;
   }
-  /* 25%{
-    background-position: 25% 50%;
-  } */
   50% {
     background-position: 100% 50%;
   }
-  /* 75%{
-    background-position: 25% 50%;
-  } */
   100% {
     background-position: 0% 25%;
   }
-}
+} */
 
 .container {
   display: flex;
@@ -42,11 +36,13 @@ body {
   align-items: center;
   height: fit-content;
 }
+
 .container a {
   text-decoration: none;
   color: rgb(255, 255, 255);
   font-size: 70px;
 }
+
 .navbar {
   font-size: 150px;
 }
