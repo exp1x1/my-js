@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: "roboto";
-  src: url(/fonts/ROBOTO/Roboto-Regular.ttf);
+  src: url(./fonts/ROBOTO/Roboto-Regular.ttf);
 }
 
 * {
@@ -24,6 +24,8 @@ body {
   max-height: 100%;
 }
 
+
+
 .main {
   display: grid;
   height: 100%;
@@ -32,7 +34,7 @@ body {
 }
 
 /* adjust navbar */
-nav {
+.nav {
   grid-column: 1/3;
   display: flex;
   width: 100%;
@@ -40,7 +42,6 @@ nav {
   justify-content: center;
   align-items: center;
   background-color: var(--primary-color);
-  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.1);
   color: var(--secondry-color-white);
   margin: auto;
   box-shadow: 0 6px 7px -7px rgba(0, 0, 0, 0.45);
@@ -48,8 +49,18 @@ nav {
   top: 0px;
 }
 
+.nav > a {
+  /* justify-self: flex-start; */
+}
+.nav img {
+  width: 3rem;
+}
+
 /* title : my library */
 .title {
+  display: flex;
+  justify-content: center;
+  width: 90%;
   font-size: 3.3rem;
 }
 
@@ -139,4 +150,12 @@ nav {
   background-color: var(--primary-color);
   grid-column: 1/3;
   box-shadow: 0 -6px 7px -7px rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer img {
+  width: 2.3rem;
+  border-radius: 50%;
 }
