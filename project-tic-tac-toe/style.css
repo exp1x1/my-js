@@ -135,8 +135,10 @@ table {
   /* background colors */
   --primery-color: rgb(252, 163, 17);
   --primery-background-color: rgb(229, 229, 229);
+  
   /* font colors */
   --font-color-white: rgb(255, 255, 255);
+  
   /* font sizes */
   --heading-font: 4rem;
 }
@@ -167,4 +169,33 @@ body {
   background-color: var(--primery-color);
 
   font-size: var(--heading-font);
+}
+
+/* game board containr  */
+
+.gameboard-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+
+  width: 100%;
+}
+
+.game-board{
+  display: grid;
+  height: fit-content;
+  grid-template: repeat(3 ,100px) / repeat(3 , 100px);
+  gap: 10px;
+}
+/* js genreted content */
+
+.game-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--font-color-white);
+  color: black;
+
+  font-size: 3rem;
 }
