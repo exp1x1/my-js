@@ -30,22 +30,23 @@ const gameBoard = (() => {
     [2, 4, 6],
   ];
 
-  let gameFinished = false;
-
   let players = [];
   let currentPlayerIndex = 0;
+  let gameFinished = false;
+
+  const hideInputBox = () => {
+    const inForm = document.querySelector(".form");
+    inForm.classList.add("hide");
+  };
 
   const play = () => {
-    const inForm = document.querySelector(".form");
-
     const p1 = document.getElementById("p1").value;
     const p2 = document.getElementById("p2").value;
 
     players.push(Player(p1, "X"));
     players.push(Player(p2, "O"));
 
-    inForm.classList.add("hide");
-
+    hideInputBox();
     renderGameBoard();
     addEventLisnerToBox();
   };
@@ -99,9 +100,9 @@ const gameBoard = (() => {
   };
 
   const addEventLisnerToBox = () => {
-    const gameBoardDisplay = document.querySelector(".game-board");
+    const gameBoardEvent = document.querySelector(".game-board");
 
-    gameBoardDisplay.addEventListener("click", (e) => {
+    gameBoardEvent.addEventListener("click", (e) => {
       playMove(e.target);
     });
   };
