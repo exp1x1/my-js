@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- un-comment this when pushing project -->
-  <!-- <link rel="stylesheet" href="../reset.css"> -->
-  <link rel="stylesheet" href="style.css">
-  <title>TIC TAC TOE</title>
-</head>
-<body>
-  <div class="container">
-    <div class="headbar">
-      TIC TAC TOE
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- un-comment this when pushing project -->
+    <!-- <link rel="stylesheet" href="../reset.css"> -->
+    <link rel="stylesheet" href="style.css" />
+    <script src="./script.js" defer></script>
+    <title>TIC TAC TOE</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="headbar">TIC TAC TOE</div>
+      <div class="gameboard-container">
+        <div class="game-board"></div>
+      </div>
+      <div class="form ">
+        <input type="text" id="p1" placeholder="Player 1" required>
+        <input type="text" id="p2" placeholder="Player 2" required>
+        <button type="submit" id="playbtn">play</button>
+      </div>
+      <div class="textdisplay">
+
+      </div>
+      <button class="rebtn hide">Retry</button>
     </div>
-    <div class="gameboard-container">
-      game board
-    </div>
-  </div>
-</body>
+  </body>
 </html>
