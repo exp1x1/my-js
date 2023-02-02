@@ -3,7 +3,6 @@ const Player = (name, sign) => {
 
   const makeMove = (num) => {
     playerMoves.push(Number(num));
-    console.log(`${name} : ${playerMoves}`);
   };
 
   return {
@@ -65,7 +64,6 @@ const gameBoard = (() => {
 
   const changeGameBoardArr = (index, playerSign) => {
     gameBoardArr[index] = playerSign;
-    console.log(gameBoardArr);
   };
 
   const checkArr = (i) => {
@@ -166,7 +164,6 @@ const gameBoard = (() => {
   };
 
   const checkWinner = (player) => {
-    console.log(player.playerMoves);
     if (test(player.playerMoves)) {
       displayWinner(player);
       gameFinished = true;
