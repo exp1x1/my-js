@@ -30,13 +30,10 @@ const gameBoard = (() => {
     [2, 4, 6],
   ];
 
-  const playerinfo = {
-    turn: "p1",
-    gameFinished: false,
-  };
+  let gameFinished = false;
 
-  let player1;
-  let player2;
+  let players = [];
+  let currentPlayerIndex = 0;
 
   const play = () => {
     const inForm = document.querySelector(".form");
@@ -44,13 +41,20 @@ const gameBoard = (() => {
     const p1 = document.getElementById("p1").value;
     const p2 = document.getElementById("p2").value;
 
-    player1 = Player(p1, "X");
-    player2 = Player(p2, "O");
+    players.push(Player(p1, "X"));
+    players.push(Player(p2, "O"));
 
     inForm.classList.add("hide");
 
     renderGameBoard();
     addEventLisnerToBox();
+  };
+
+  const checkGameStatus = () => {
+    if (gameFinished === true) {
+      return true;
+    }
+    return false;
   };
 
   const createGameBox = (index) => {
@@ -71,8 +75,10 @@ const gameBoard = (() => {
   };
 
   const checkArr = (i) => {
-    if (gameBoardArr[i] === player1.sign || gameBoardArr[i] === player2.sign) {
-      console.log(i)
+    if (
+      gameBoardArr[i] === players[0].sign ||
+      gameBoardArr[i] === players[1].sign
+    ) {
       return true;
     }
     return false;
@@ -80,46 +86,24 @@ const gameBoard = (() => {
 
   const playMove = (el) => {
     const i_num = el.getAttribute("data-box");
-    if (checkArr(i_num)) {
+
+    if (checkArr(i_num) || checkGameStatus()) {
       return;
     }
-    if(playerinfo.gameFinished){
-      return
-    }
 
-    if (playerinfo.turn === "p1") {
-      changeGameBoardArr(i_num, player1.sign);
-      player1.makeMove(i_num);
-      checkWinner(player1);
-      playerinfo.turn = "p2";
-    } else if (playerinfo.turn === "p2") {
-      changeGameBoardArr(i_num, player2.sign);
-      player2.makeMove(i_num);
-      checkWinner(player2);
-      playerinfo.turn = "p1";
-    }
-    displayTurn();
+    changeGameBoardArr(i_num, players[currentPlayerIndex].sign);
+    players[currentPlayerIndex].makeMove(i_num);
+    checkWinner(players[currentPlayerIndex]);
+    currentPlayerIndex = 1 - currentPlayerIndex;
     renderGameBoard();
   };
 
   const addEventLisnerToBox = () => {
-    // const gameBox = document.querySelectorAll(".game-box");
+    const gameBoardDisplay = document.querySelector(".game-board");
 
-    // if (playerinfo.gameFinished) {
-    //   return;
-    // }
-
-    // gameBox.forEach((e) =>
-    //   e.addEventListener("click", () => {
-    //     console.log(e);
-    //     playMove(e);
-    //   })
-    // );
-    const gameBoard = document.querySelector('.game-board')
-
-    gameBoard.addEventListener('click' , (e) => {
-      playMove(e.target)
-    })
+    gameBoardDisplay.addEventListener("click", (e) => {
+      playMove(e.target);
+    });
   };
 
   const renderGameBoard = () => {
@@ -151,6 +135,7 @@ const gameBoard = (() => {
     const reBtn = document.querySelector(".rebtn");
     reBtn.classList.remove("hide");
   };
+
   const displayWinner = (player) => {
     textDisplay.innerText = `${player.name} Is Winner`;
 
@@ -162,32 +147,28 @@ const gameBoard = (() => {
     resetBtn();
   };
 
-  const displayTurn = (player) => {
-    if (playerinfo.gameFinished) {
+  const displayTurn = () => {
+    if (checkGameStatus()) {
       return;
     }
-
-    if (playerinfo.turn === "p1") {
-      textDisplay.innerText = `${player1.name} TuRn`;
-    } else if (playerinfo.turn === "p2") {
-      textDisplay.innerText = `${player2.name} TuRn`;
-    }
+    textDisplay.innerText = `${players[currentPlayerIndex].name} Turn`;
   };
 
   const checkWinner = (player) => {
     if (test(player.playerMoves)) {
       displayWinner(player);
-      playerinfo.gameFinished = true;
+      gameFinished = true;
     } else if (!gameBoardArr.includes("")) {
       displayDraw();
-      playerinfo.gameFinished = true;
+      gameFinished = true;
     }
   };
 
   const replay = () => {
     gameBoardArr = ["", "", "", "", "", "", "", "", ""];
-    playerinfo.turn = "p1";
-    playerinfo.gameFinished = false;
+    players = [];
+    currentPlayerIndex = 0;
+    gameFinished = false;
     clearDisplay();
     play();
   };
