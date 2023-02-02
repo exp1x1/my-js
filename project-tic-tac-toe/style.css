@@ -135,12 +135,14 @@ table {
   /* background colors */
   --primery-color: rgb(252, 163, 17);
   --primery-background-color: rgb(229, 229, 229);
-  
+  --secondry-background-color: rgb(36, 54, 92);
+
   /* font colors */
   --font-color-white: rgb(255, 255, 255);
-  
+
   /* font sizes */
-  --heading-font: 4rem;
+  --heading-font: 6rem;
+  --normal-font: 1.7rem;
 }
 html,
 body {
@@ -151,9 +153,11 @@ body {
 .container {
   display: flex;
   flex-direction: column;
+  /* flex: 1; */
   align-items: center;
   width: 100%;
   height: 100%;
+  gap: 22px;
   background-color: var(--primery-background-color);
 
   color: var(--font-color-white);
@@ -161,41 +165,100 @@ body {
 
 .headbar {
   display: flex;
-  width: 100%;
   align-items: center;
   justify-content: center;
 
+  width: 100%;
   height: 100px;
   background-color: var(--primery-color);
 
   font-size: var(--heading-font);
 }
 
+/* name form  */
+
+.form {
+  position: absolute;
+  top: 16%;
+  display: flex;
+  flex-direction: column;
+  /* flex: 1; */
+  gap: 22px;
+  font-size: var(--normal-font);
+  background-color: var(--secondry-background-color);
+  padding: 28px;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+#playbtn {
+  padding: 0;
+  font-size: var(--normal-font);
+  background-color: var(--primery-color);
+  color: var(--font-color-white);
+  border: none;
+  border-radius: 20px;
+  text-decoration: none;
+  width: 150px;
+  height: 50px;
+}
+
+.form input {
+  appearance: none;
+  min-height: 40px;
+  width: 500px;
+  border: none;
+  border-radius: 20px;
+  padding: 7px;
+  font-size: var(--normal-font);
+}
 /* game board containr  */
 
-.gameboard-container{
+.gameboard-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 1;
 
   width: 100%;
 }
 
-.game-board{
+.game-board {
   display: grid;
   height: fit-content;
-  grid-template: repeat(3 ,100px) / repeat(3 , 100px);
+  grid-template: repeat(3, minmax(100px, 1fr)) / repeat(3, minmax(100px, 1fr));
   gap: 10px;
 }
+
+.rebtn {
+  padding: 0;
+  font-size: var(--normal-font);
+  background-color: var(--secondry-background-color);
+  color: var(--font-color-white);
+  border: none;
+  border-radius: 10px;
+  width: 200px;
+  height: 56px;
+}
+
 /* js genreted content */
 
-.game-box{
+.game-box {
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: var(--font-color-white);
+  color: var(--secondry-background-color);
   color: black;
 
   font-size: 3rem;
+}
+
+.textdisplay {
+  font-size: var(--heading-font);
+  color: var(--primery-color);
 }
