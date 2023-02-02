@@ -174,7 +174,7 @@ const gameBoard = (() => {
     play();
   };
 
-  return { play, replay, gameBoardArr };
+  return { play, replay};
 })();
 
 document.getElementById("playbtn").addEventListener("click", () => {
