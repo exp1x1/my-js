@@ -30,10 +30,13 @@ const gameBoard = (() => {
     [2, 4, 6],
   ];
 
-  let turn = "p1";
+  const playerinfo = {
+    turn: "p1",
+    gameFinished: false,
+  };
+
   let player1;
   let player2;
-  let gameFinished = false;
 
   const play = () => {
     const inForm = document.querySelector(".form");
@@ -47,6 +50,7 @@ const gameBoard = (() => {
     inForm.classList.add("hide");
 
     renderGameBoard();
+    addEventLisnerToBox();
   };
 
   const createGameBox = (index) => {
@@ -68,6 +72,7 @@ const gameBoard = (() => {
 
   const checkArr = (i) => {
     if (gameBoardArr[i] === player1.sign || gameBoardArr[i] === player2.sign) {
+      console.log(i)
       return true;
     }
     return false;
@@ -78,36 +83,43 @@ const gameBoard = (() => {
     if (checkArr(i_num)) {
       return;
     }
+    if(playerinfo.gameFinished){
+      return
+    }
 
-    if (turn === "p1") {
+    if (playerinfo.turn === "p1") {
       changeGameBoardArr(i_num, player1.sign);
       player1.makeMove(i_num);
       checkWinner(player1);
-      renderGameBoard();
-      turn = "p2";
-      displayTurn();
-    } else if (turn === "p2") {
+      playerinfo.turn = "p2";
+    } else if (playerinfo.turn === "p2") {
       changeGameBoardArr(i_num, player2.sign);
       player2.makeMove(i_num);
       checkWinner(player2);
-      renderGameBoard();
-      turn = "p1";
-      displayTurn();
+      playerinfo.turn = "p1";
     }
+    displayTurn();
+    renderGameBoard();
   };
 
   const addEventLisnerToBox = () => {
-    const gameBox = document.querySelectorAll(".game-box");
+    // const gameBox = document.querySelectorAll(".game-box");
 
-    if (gameFinished) {
-      return;
-    }
+    // if (playerinfo.gameFinished) {
+    //   return;
+    // }
 
-    gameBox.forEach((e) =>
-      e.addEventListener("click", () => {
-        playMove(e);
-      })
-    );
+    // gameBox.forEach((e) =>
+    //   e.addEventListener("click", () => {
+    //     console.log(e);
+    //     playMove(e);
+    //   })
+    // );
+    const gameBoard = document.querySelector('.game-board')
+
+    gameBoard.addEventListener('click' , (e) => {
+      playMove(e.target)
+    })
   };
 
   const renderGameBoard = () => {
@@ -116,7 +128,6 @@ const gameBoard = (() => {
     for (let i = 0; i < gameBoardArr.length; i += 1) {
       createGameBox(i);
     }
-    addEventLisnerToBox();
   };
 
   // function for comparing two array inside object array
@@ -152,13 +163,13 @@ const gameBoard = (() => {
   };
 
   const displayTurn = (player) => {
-    if (gameFinished) {
+    if (playerinfo.gameFinished) {
       return;
     }
 
-    if (turn === "p1") {
+    if (playerinfo.turn === "p1") {
       textDisplay.innerText = `${player1.name} TuRn`;
-    } else if (turn === "p2") {
+    } else if (playerinfo.turn === "p2") {
       textDisplay.innerText = `${player2.name} TuRn`;
     }
   };
@@ -166,17 +177,17 @@ const gameBoard = (() => {
   const checkWinner = (player) => {
     if (test(player.playerMoves)) {
       displayWinner(player);
-      gameFinished = true;
+      playerinfo.gameFinished = true;
     } else if (!gameBoardArr.includes("")) {
       displayDraw();
-      gameFinished = true;
+      playerinfo.gameFinished = true;
     }
   };
 
   const replay = () => {
-    turn = "p1";
     gameBoardArr = ["", "", "", "", "", "", "", "", ""];
-    gameFinished = false;
+    playerinfo.turn = "p1";
+    playerinfo.gameFinished = false;
     clearDisplay();
     play();
   };
