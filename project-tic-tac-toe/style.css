@@ -45,7 +45,7 @@ body {
 
 /* name form  */
 
-.form {
+form {
   position: absolute;
   top: 16%;
   display: flex;
@@ -76,7 +76,7 @@ body {
   height: 50px;
 }
 
-.form input {
+form input {
   appearance: none;
   min-height: 40px;
   width: 500px;
@@ -99,7 +99,7 @@ body {
   display: grid;
   height: fit-content;
   grid-template: repeat(3, minmax(100px, 1fr)) / repeat(3, minmax(100px, 1fr));
-  gap: 10px;
+  /* gap: 10px; */
 }
 
 .rebtn {
@@ -122,8 +122,9 @@ body {
   background-color: var(--font-color-white);
   color: var(--secondry-background-color);
   color: black;
-
+  
   font-size: 3rem;
+  border: 7px solid var(--primery-background-color);
 }
 
 .textdisplay {

@@ -51,12 +51,7 @@ const gameBoard = (() => {
     addEventLisnerToBox();
   };
 
-  const checkGameStatus = () => {
-    if (gameFinished === true) {
-      return true;
-    }
-    return false;
-  };
+  const checkGameStatus = () => gameFinished;
 
   const createGameBox = (index) => {
     const newDiv = document.createElement("div");
@@ -174,7 +169,7 @@ const gameBoard = (() => {
     play();
   };
 
-  return { play, replay};
+  return { play, replay };
 })();
 
 document.getElementById("playbtn").addEventListener("click", () => {
