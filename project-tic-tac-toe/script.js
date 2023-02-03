@@ -173,11 +173,9 @@ const gameBoard = (() => {
 })();
 
 document.getElementById("playbtn").addEventListener("click", () => {
-  event.preventDefault();
   gameBoard.play();
 });
 
 document.querySelector(".rebtn").addEventListener("click", () => {
-  event.preventDefault();
   gameBoard.replay();
 });
