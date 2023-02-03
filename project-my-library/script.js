@@ -146,4 +146,5 @@ function changeBookStatus(index) {
     myLibrary[index].haveRead = "true";
   }
   addBookToDisplay(myLibrary);
+  console.log()
 }
